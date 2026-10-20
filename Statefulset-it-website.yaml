@@ -1,0 +1,21 @@
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: it-website
+spec:
+  selector:
+    matchLabels:
+      app: it-website # has to match .spec.template.metadata.labels 
+  replicas: 3 # by default is 1
+  template:
+    metadata:
+      labels:
+        app: it-website # has to match .spec.selector.matchLabels
+    spec: 
+      containers:
+      - name: it-website
+        image: tochukwucloud/it-website:latest
+        ports:
+        - containerPort: 80
+          name: it-website

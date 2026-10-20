@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: it-website
+  labels:
+    app: it-website
+spec:
+  # modify replicas according to your case
+  replicas: 3
+  selector:
+    matchLabels:
+      app: it-website
+  template:
+    metadata:
+      labels:
+        app: it-website
+    spec:
+      containers:
+      - name: it-website
+        image: tochukwucloud/it-website:latest
